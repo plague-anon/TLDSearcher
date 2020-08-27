@@ -21,10 +21,12 @@ setup(
     author_email='plague_anon@protonmail.com',
     python_requires='>=3.5',
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
-        'Intended Audience :: Developers',
+        'Development Status :: 5 - Production/Stable',
+        'Intended Audience :: Information Technology',
         'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
         'Natural Language :: English',
+        'Operating System :: Unix',
+        'Topic :: Internet :: WWW/HTTP :: Indexing/Search',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
@@ -44,6 +46,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/plague-anon/tldsearcher',
-    version='1.0.0',
+    version='1.0.1',
     zip_safe=False,
 )
