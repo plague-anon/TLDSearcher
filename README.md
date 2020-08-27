@@ -1,4 +1,4 @@
-![License](https://img.shields.io/github/license/plague-anon/tldsearcher) ![LastCommit](https://img.shields.io/github/last-commit/plague-anon/tldsearcher) ![os](https://img.shields.io/badge/Supported%20OS-GNU%2FLinux-blue)
+![License](https://img.shields.io/github/license/plague-anon/tldsearcher) ![LastCommit](https://img.shields.io/github/last-commit/plague-anon/tldsearcher) ![os](https://img.shields.io/badge/Supported%20OS-GNU%2FLinux-blue) ![version](https://img.shields.io/github/v/release/plague-anon/TLDSearcher) ![wheel](https://img.shields.io/pypi/wheel/TLDSearcher) ![pythonversion](https://img.shields.io/pypi/pyversions/tldsearcher)
 
 # TLDSearcher
 > This Python tool searches given domains for any active top-level-domains(TLDs) also using the domain name.
@@ -32,9 +32,6 @@ _The -d flag must be a string of TLDs, separated with a comma. The preceding '.'
 
 _For more examples and usage, please refer to the [Wiki][wiki]._
 
-## Release History
-* 1.0.0
-    * 1.0.0 full package release
 
 ## Meta
 
