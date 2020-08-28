@@ -1,34 +1,48 @@
 ![License](https://img.shields.io/github/license/plague-anon/tldsearcher) ![LastCommit](https://img.shields.io/github/last-commit/plague-anon/tldsearcher) ![os](https://img.shields.io/badge/Supported%20OS-GNU%2FLinux-blue) ![version](https://img.shields.io/github/v/release/plague-anon/TLDSearcher) ![wheel](https://img.shields.io/pypi/wheel/TLDSearcher) ![pythonversion](https://img.shields.io/pypi/pyversions/tldsearcher)
 
-# TLDSearcher
-> This Python tool searches given domains for any active top-level-domains(TLDs) also using the domain name.
+![tldSearcher Image](/imgs/tldsearcher.png)
 
-Supplying 'example' as the target, and 'com,uk,net,org,biz' as the domains; tldsearcher will tell you if the domains are active or not.
+# TLDSearcher
+This Python tool searcher target domains for existing top-level domains _(TLDs)_
 
 ## Installation
-### Pypi
-`pip install tldsearcher`
+**TLDSearcher** can be installed via [Github](https://github.com/plague-anon/TLDSearcher/) or [PyPI](https://pypi.org/project/tldsearcher/). Details on each are listed below.
 
 ### Github
-Clone the repository from Github
-```
-git clone https://github.com/plague-anon/TLDSearcher
-```
-Change into the directory
-```
-cd TLDSearcher
-```
-Run setup.py
-```
-python setup.py install
-```
-The installation process will create a link to your /usr/local/bin file and you can run the program from anywhere on your system by typing `tldsearcher`
+Navigate to the directory where you want to download the program.
+
+1. open a terminal and type:
+
+> `git clone https://www.github.com/plague-anon/TLDSearcher`
+
+2. Change into the directory git made for you:
+
+> `cd TLDSearcher`
+
+3. Run the following command to install the program:
+
+> `python3 setup.py install`
+
+You can now use the `tldsearcher` command from anywhere on your system
+
+
+### PyPI
+You can install **TLDSearcher** via pip with 2 methods.
+**Method 1**
+Issue the following command from the terminal to download the [latest version](https://pypi.org/project/tldsearcher/) from [pypi.org](https://pypi.org)
+
+> `pip3 install tldsearcher`
+
+**Method 2**
+Issue the following command from the terminal to download the [latest version](https://github.com/plague-anon/TLDSearcher/releases) from [Github](https://www.github.com)
+
+> `pip3 install -e git+https://github.com/plague-anon/TLDSearcher#egg=pkg`
 
 ## Usage Example
 ```
 tldsearcher -t example -d com,co.uk,.net,.org -v
 ```
-_The -d flag must be a string of TLDs, separated with a comma. The preceding '.' does not have to be supplied_
+_The `-d` flag must be a string of TLDs, separated with a comma. The preceding `.` does not have to be supplied_
 
 _For more examples and usage, please refer to the [Wiki][wiki]._
 
