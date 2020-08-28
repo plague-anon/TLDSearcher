@@ -5,7 +5,7 @@ import argparse
 import time
 import sys
 import tlds
-version = '1.0.1'
+version = '1.0.3'
 
 list = 'TLDLIST'
 targets=[]# Targets to scan
