@@ -1,6 +1,5 @@
 AUTHORS.rst
 CONTRIBUTING.rst
-HISTORY.rst
 LICENSE
 MANIFEST.in
 README.md
@@ -10,7 +9,6 @@ docs/Makefile
 docs/authors.rst
 docs/conf.py
 docs/contributing.rst
-docs/history.rst
 docs/index.rst
 docs/installation.rst
 docs/make.bat
