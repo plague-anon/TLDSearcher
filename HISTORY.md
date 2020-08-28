@@ -1,5 +1,6 @@
 # History
-
+* **1.0.4**
+    * Corrected errors in documentation and git trees
 * **1.0.3**
     * Added more documentation
     * New installation instructions
