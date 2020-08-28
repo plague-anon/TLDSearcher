@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: tldsearcher
-Version: 1.0.4
+Version: 1.0.5
 Summary: A tool for finding TLDs for domains
 Home-page: https://github.com/plague-anon/tldsearcher
 Author: plague
@@ -79,6 +79,8 @@ Description: ![License](https://img.shields.io/github/license/plague-anon/tldsea
         
         
         # History
+        * **1.0.5**
+            * Added __main__ file to root directory to prevent error when starting via python3
         * **1.0.4**
             * Corrected errors in documentation and git trees
         * **1.0.3**

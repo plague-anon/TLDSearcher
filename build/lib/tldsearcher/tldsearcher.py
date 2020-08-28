@@ -2,10 +2,10 @@
 
 import socket
 import argparse
-import datetime
+import time
 import sys
 import tlds
-version = '1.0.3'
+version = '1.0.5'
 
 list = 'TLDLIST'
 targets=[]# Targets to scan
@@ -43,38 +43,41 @@ Last Attempt: -----: {lastTry}
 {"".join(pos)}''')
 
 def scan():
+	print(f'''
+===================================
+Starting TLDScanner at {time.strftime('%H:%M:%S')} [+]
+-----------------------------------
+''')
 	for target in targets:
 		for tld in tldList:
 			global lastTry
 			global attempts
+			global posResults
 			attempts += 1
 			lastTry=tldList[attempts-1]
-			if args.verbose:
+			if verbose:
 				print(f'Trying: {target}{tld}')
+			url = f'{target}{tld}'
 			try:
-				url = f'{target}{tld}'
 				response = socket.gethostbyname_ex(url)
 				if response[2]:
 					if verbose:
-						print(f'Found that {target} has TLD of {tld} ({response[2]})')
+						print(f'  Found that {target} has TLD of {tld} || hostname: {response[0]} | Alias: {response[1]} | IP: {response[2]}')
 					else:
-						print(f'Found that {target} has TLD of {tld}')
+						print(f'  Found that {target} has TLD of {tld}')
 					pos.append(f'{target}{tld}\n')
-					global posResults
 					posResults+=1
-				else:
-					if args.verbose:
-						print(f'No match found for {target}{tld}')
-
 			except KeyboardInterrupt:
-				printer()
-				sys.exit()
-
+				sys.exit(printer())
+			except socket.gaierror: # No response from server
+					if verbose:
+						print(f'  No match found for {target}{tld}')
 			except Exception as e:
-				if args.verbose:
+				if verbose:
 					log = []
 					log.append(f'Error: {e}')
-					printer()
+
+
 
 
 
@@ -97,6 +100,7 @@ def sortTLD(tld):
 
 def setVars():
 	if args.verbose:
+		global verbose
 		verbose=True
 
 # TODO: Prevent using more than one domain-related flag.
@@ -119,6 +123,7 @@ def setVars():
 		''')
 		print('Select which category you want to search for.')
 		domainChoice = input('Type a number and click ENTER: ')
+		global tldList
 		tldList = tlds.getTlds(int(domainChoice))
 	else:
 		domainInputFile = open((list), 'r').readlines()

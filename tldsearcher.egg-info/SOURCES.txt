@@ -1,5 +1,6 @@
 AUTHORS.rst
 CONTRIBUTING.rst
+HISTORY.md
 LICENSE
 MANIFEST.in
 README.md
@@ -9,9 +10,11 @@ docs/Makefile
 docs/authors.rst
 docs/conf.py
 docs/contributing.rst
+docs/history.md
 docs/index.rst
 docs/installation.rst
 docs/make.bat
+docs/readme.md
 docs/usage.rst
 tldsearcher/__init__.py
 tldsearcher/tlds.py
