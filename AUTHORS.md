@@ -1,14 +1,13 @@
-=======
-Credits
-=======
+# Credits
 
-Development Lead
+## Development Lead
 ----------------
 
 * plague <plague_anon@protonmail.com>
+    * _AKA_ Ian
 
 
-Contributors
+## Contributors
 ------------
 
 * imsi      | Anonops IRC #python
