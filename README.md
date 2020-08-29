@@ -5,7 +5,7 @@
 # TLDSearcher
 This Python tool searcher target domains for existing top-level domains _(TLDs)_
 
-Knowing which TLDs are active for a specific website can be a helpful tool in reconnaissance during a scan. Instead of Google-dorking, and let's face it - failing to get enough results, use **TLDSearcher** to check **ALL**, currently available TLDs on the web. 
+Knowing which TLDs are active for a specific domain can be a helpful tool in reconnaissance during a scan. Instead of Google-dorking, and let's face it - failing to get enough results, use **TLDSearcher** to check **ALL**, currently available TLDs on the web.
 
 ## Installation
 **TLDSearcher** can be installed via [Github](https://github.com/plague-anon/TLDSearcher/) or [PyPI](https://pypi.org/project/tldsearcher/). Details on each are listed below.

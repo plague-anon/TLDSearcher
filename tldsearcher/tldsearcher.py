@@ -5,7 +5,8 @@ import argparse
 import time
 import sys
 import tlds
-version = '1.0.5'
+from __init__ import __version__
+version = __version__
 
 list = 'TLDLIST'
 targets=[]# Targets to scan
@@ -20,14 +21,16 @@ domainCategory=0
 
 def main():
 
-	if len(sys.argv) <= 1:
-		print('Use -h for help')
-	else:
-		setTarget()
-
-		scan()
-
-		printer()
+		print(version)
+		#
+		# if len(sys.argv) <= 1:
+		# 	print('Use -h for help')
+		# else:
+		# 	setTarget()
+		#
+		# 	scan()
+		#
+		# 	printer()
 
 def printer():
 	print(f'''
