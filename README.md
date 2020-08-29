@@ -1,11 +1,11 @@
-![License](https://img.shields.io/github/license/plague-anon/tldsearcher) ![LastCommit](https://img.shields.io/github/last-commit/plague-anon/tldsearcher) ![os](https://img.shields.io/badge/Supported%20OS-GNU%2FLinux-blue) ![version](https://img.shields.io/github/v/release/plague-anon/TLDSearcher) ![wheel](https://img.shields.io/pypi/wheel/TLDSearcher) ![pythonversion](https://img.shields.io/pypi/pyversions/tldsearcher)
+![License](https://img.shields.io/github/license/plague-anon/tldsearcher) ![LastCommit](https://img.shields.io/github/last-commit/plague-anon/tldsearcher) ![os](https://img.shields.io/badge/Supported%20OS-GNU%2FLinux-blue) ![version](https://img.shields.io/github/v/release/plague-anon/TLDSearcher) ![pythonversion](https://img.shields.io/pypi/pyversions/tldsearcher)
 
 ![tldSearcher Image](/imgs/tldsearcher.png)
 
 # TLDSearcher
 This Python tool searcher target domains for existing top-level domains _(TLDs)_
 
-Knowing which TLDs are active for a specific website can be a helpful tool in reconnaissance during a scan. Instead of Google-dorking, and let's face it - failing to get enough results, use **TLDSearcher** to check **ALL**, currently available TLDs on the web. 
+Knowing which TLDs are active for a specific domain can be a helpful tool in reconnaissance during a scan. Instead of Google-dorking, and let's face it - failing to get enough results, use **TLDSearcher** to check **ALL**, currently available TLDs on the web.
 
 ## Installation
 **TLDSearcher** can be installed via [Github](https://github.com/plague-anon/TLDSearcher/) or [PyPI](https://pypi.org/project/tldsearcher/). Details on each are listed below.
