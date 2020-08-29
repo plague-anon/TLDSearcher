@@ -1,4 +1,4 @@
-![License](https://img.shields.io/github/license/plague-anon/tldsearcher) ![LastCommit](https://img.shields.io/github/last-commit/plague-anon/tldsearcher) ![os](https://img.shields.io/badge/Supported%20OS-GNU%2FLinux-blue) ![version](https://img.shields.io/github/v/release/plague-anon/TLDSearcher) ![wheel](https://img.shields.io/pypi/wheel/TLDSearcher) ![pythonversion](https://img.shields.io/pypi/pyversions/tldsearcher)
+![License](https://img.shields.io/github/license/plague-anon/tldsearcher) ![LastCommit](https://img.shields.io/github/last-commit/plague-anon/tldsearcher) ![os](https://img.shields.io/badge/Supported%20OS-GNU%2FLinux-blue) ![version](https://img.shields.io/github/v/release/plague-anon/TLDSearcher) ![pythonversion](https://img.shields.io/pypi/pyversions/tldsearcher)
 
 ![tldSearcher Image](/imgs/tldsearcher.png)
 
