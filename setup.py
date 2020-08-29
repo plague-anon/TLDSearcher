@@ -4,7 +4,7 @@
 
 from setuptools import setup, find_packages
 
-from tldsearcher/__init__ import __version__
+from tldsearcher.__init__ import __version__
 
 with open('README.md') as readme_file:
     readme = readme_file.read()
