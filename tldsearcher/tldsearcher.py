@@ -22,15 +22,15 @@ domainCategory=0
 def main():
 
 		print(version)
-		#
-		# if len(sys.argv) <= 1:
-		# 	print('Use -h for help')
-		# else:
-		# 	setTarget()
-		#
-		# 	scan()
-		#
-		# 	printer()
+
+		if len(sys.argv) <= 1:
+			print('Use -h for help')
+		else:
+			setTarget()
+
+			scan()
+
+			printer()
 
 def printer():
 	print(f'''
@@ -135,7 +135,7 @@ def setVars():
 
 def setArgs():
 	parser = argparse.ArgumentParser(description='Search for active Top Level Domains(TLD\'s) for domain names.',usage='%(prog)s {[-t <TARGET>] [-tF <TARGETFILE>]} {[-d com,co.uk,.net] [-dF <DOMAINFILE>] [-dC]} [-v] ')
-	parser.add_argument('-t', '--targets', help='targets domain name to scan for tldList', action='store')
+	parser.add_argument('-t', '--target', help='targets domain name to scan for tldList', action='store')
 	parser.add_argument('-tF', '--targetFile', help='Supply a targets file', action='store')
 	parser.add_argument('-d', '--domain', help='tldList to scan. (com,ua,nz,de)', action='store')
 	parser.add_argument('-dC', '--domainCategory', help='Scan TLD categories', action='store_true')
@@ -146,11 +146,21 @@ def setArgs():
 	args = parser.parse_args()
 
 def setTarget():
-	if args.targets:
-		targets.append(args.targets)
+	if args.target:
+		target = args.target
+		if checkTarget():
+			targets.append(args.target)
 	elif args.targetFile:
 		tFile = open(('args.targetFile'), 'r')
-		targets.append(tFile.readlines())
+		for x in tFile.readlines():
+			if checkTarget():
+				targets.append(tFile.readlines())
+
+def checkTarget(target):
+	if target.find('.') or target.find('/') or target.find(:):
+		return False
+	else:
+		return True
 
 if __name__ == '__main__':
 	setArgs()
