@@ -29,22 +29,22 @@ You can now use the `tldsearcher` command from anywhere on your system
 
 
 ### PyPI
-You can install **TLDSearcher** via pip with 2 methods.
+You can install **TLDSearcher** via pip
 **Method 1**
 Issue the following command from the terminal to download the [latest version](https://pypi.org/project/tldsearcher/) from [pypi.org](https://pypi.org)
 
 > `pip3 install tldsearcher`
 
-**Method 2**
-Issue the following command from the terminal to download the [latest version](https://github.com/plague-anon/TLDSearcher/releases) from [Github](https://www.github.com)
 
-> `pip3 install -e git+https://github.com/plague-anon/TLDSearcher#egg=pkg`
+## Usage Examples
+To verbosely search for **all** TLDs for _example_:
+`tldsearcher -t example -v`
 
-## Usage Example
-```
-tldsearcher -t example -d com,co.uk,.net,.org -v
-```
-_The `-d` flag must be a string of TLDs, separated with a comma. The preceding `.` does not have to be supplied_
+To verbosely search for specific TLDs for _example_ and output into _scan.txt_:
+`tldsearcher -t example -d com,net,info,org -o scan.txt -v `
+
+To see a list of TLD categories to scan for _example_:
+`tldSearcher -t example -dC -o scan.txt -v`
 
 _For more examples and usage, please refer to the [Wiki][wiki]._
 
