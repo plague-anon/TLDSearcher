@@ -33,6 +33,8 @@ domainCategory=0# for -domain-category menu
 continueDomain = ''# --domain-continue tld
 continueDomainIndice=0#--domain-continue tld indice in tlds.py
 outputFile=''
+max_scans=0
+
 
 def main():
 		if len(sys.argv) <= 1:
@@ -101,6 +103,12 @@ Starting TLDScanner at {time.strftime('%H:%M:%S')} [+]
 			global attempts
 			attempts += 1
 
+			global max_scans
+			if max_scans >=1:
+				max_scans -= 1
+			elif max_scans == 0:
+				sys.exit(printer())
+
 			# if args.proxy:
 			# 	proxyScan(url)
 			# else:
@@ -150,10 +158,17 @@ def sortTLD(tld):
 def setVars():
 	global listOfDomains
 	global outputFile
+	global max_scans
 
-	if args.proxy:
-		global proxy
-		proxy = True
+	if args.max_scans:
+		if int(args.max_scans) >= 1:
+			max_scans = int(args.max_scans)-1
+		else:
+			sys.exit(print('You must give a number >= 1 for --max_scans'))
+	#
+	# if args.proxy:
+	# 	global proxy
+	# 	proxy = True
 
 	if args.verbose:
 		global verbose
@@ -203,6 +218,7 @@ def setArgs():
 	parser.add_argument('-dC', '--domainCategory', help='Scan specific TLD categories', action='store_true')
 	parser.add_argument('-dc', '--domainContinue', help='Continue scanning all domains, starting from last attempt "..."', action='store')
 	parser.add_argument('-dF', '--domainFile', help='List of listOfDomains to scan. (Default = all)', action='store')
+	parser.add_argument('--max_scans', help='Maximum number of TLDs to scan', action='store')
 	parser.add_argument('-o', '--output', help='File to output results into', action='store')
 	#parser.add_argument('-p', '--proxy', help='Use proxies for requests (VERY SLOW!)', action='store_true')
 	parser.add_argument('-v', '--verbose', help='Verbose output mode', action='store_true')
