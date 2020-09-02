@@ -1,4 +1,9 @@
 # History
+* **1.1.0**
+    * You can now specify which domain to start from _(when doing a full TLD scan)_ by using the -dc flag `-dc <Domain_To_Continue_From>`
+    * You can now save the output of a scan into a file by using the `-o <output_file_name>` flag
+* **1.0.6**
+    * Fixed bug with files
 * **1.0.5**
     * Added __main__ file to root directory to prevent error when starting via python3
 * **1.0.4**
