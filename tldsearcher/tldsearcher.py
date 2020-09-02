@@ -52,11 +52,17 @@ def main():
 ====================
 Atempted:----------: {attempts}
 Positive results:--: {len(pos)}
-Last Attempt: -----: {lastTry}
-========================
+Last Attempt: -----: {lastTry}''')
+			if len(pos)>=1:
+				print(f'''========================
 [+] Positive Results [+]
 ========================
 {"".join(pos)}''')
+			else:
+				print('''========================
+[-] No Results Found [-]
+========================''')
+
 
 
 def output(line):
