@@ -4,3 +4,5 @@
 *.logs
 *.egg-info/*
 __pycache__/*
+
+tldsearcher/__pycache__/
