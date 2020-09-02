@@ -4,8 +4,8 @@
 # When scanning, and the x.y domain being tried is not responding, and the user uses CTRL-C, the system throws an error like "handled exception during gaierror exception"
 # Proxy scanning is slow and always returns 0 when using .get_status_code(), or None when using .get()
 
-# LIST OF THINGS TO DO
-# ====================
+# TODO
+# ====
 # Implement proxy use for requests
 # Fix 'During handling of the above exception, another exception occurred:' error when using CTRL-C during a scan.
 # Prevent more than one domain flag being used
@@ -95,13 +95,16 @@ Starting TLDScanner at {time.strftime('%H:%M:%S')} [+]
 			if verbose:
 				print(f'Trying: {url}')
 
-
 			global lastTry
 			lastTry=tld
 
 			global attempts
 			attempts += 1
 
+			# if args.proxy:
+			# 	proxyScan(url)
+			# else:
+			# 	normalScan(url, target, tld)
 			normalScan(url, target, tld)
 
 # TODO: Too slow and retuns 0
@@ -114,6 +117,7 @@ Starting TLDScanner at {time.strftime('%H:%M:%S')} [+]
 
 
 def normalScan(url, target, tld):
+
 	try:
 		response = socket.gethostbyname_ex(url)
 		if response[2]:
