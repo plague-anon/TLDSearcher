@@ -3,3 +3,4 @@
 /tests/*
 *.logs
 *.egg-info/*
+__pycache__/*
