@@ -47,17 +47,19 @@ def main():
 			printer()
 
 			if args.output:
-				output(f'''========================
+				output(f'''====================
+Target domain: {args.target}
+====================
 Atempted:----------: {attempts}
 Positive results:--: {len(pos)}
 Last Attempt: -----: {lastTry}''')
-			if len(pos)>=1:
-				output(f'''========================
+				if len(pos)>=1:
+					output(f'''========================
 [+] Positive Results [+]
 ========================
 {"".join(pos)}''')
-			else:
-				print('''========================
+				else:
+					print('''========================
 [-] No Results Found [-]
 ========================''')
 
@@ -70,7 +72,8 @@ def output(line):
 		sys.stdout = original_stdout
 
 def printer():
-	print(f'''
+	print(f'''====================
+Target domain: {args.target}
 ====================
 Atempted:----------: {attempts}
 Positive results:--: {len(pos)}
