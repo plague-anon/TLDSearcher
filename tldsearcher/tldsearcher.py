@@ -33,7 +33,7 @@ domainCategory=0# for -domain-category menu
 continueDomain = ''# --domain-continue tld
 continueDomainIndice=0#--domain-continue tld indice in tlds.py
 outputFile=''
-max_scans=0
+max_scans=-1
 
 
 def main():
@@ -47,14 +47,12 @@ def main():
 			printer()
 
 			if args.output:
-				output(f'''====================
-[/] TLD SEARCHER [\]   by plague
-====================
+				output(f'''========================
 Atempted:----------: {attempts}
 Positive results:--: {len(pos)}
 Last Attempt: -----: {lastTry}''')
 			if len(pos)>=1:
-				print(f'''========================
+				output(f'''========================
 [+] Positive Results [+]
 ========================
 {"".join(pos)}''')
@@ -64,7 +62,6 @@ Last Attempt: -----: {lastTry}''')
 ========================''')
 
 
-
 def output(line):
 	original_stdout = sys.stdout
 	with open(args.output, 'a') as o:
@@ -72,11 +69,8 @@ def output(line):
 		print(line)
 		sys.stdout = original_stdout
 
-
 def printer():
 	print(f'''
-====================
-[/] TLD SEARCHER [\]   by plague
 ====================
 Atempted:----------: {attempts}
 Positive results:--: {len(pos)}
@@ -93,15 +87,27 @@ Last Attempt: -----: {lastTry}''')
 
 def scan():
 	print(f'''
-===================================
-Starting TLDScanner at {time.strftime('%H:%M:%S')} [+]
------------------------------------
-''')
+  _______ _      _____   _____                     _
+ |__   __| |    |  __ \ / ____|                   | |
+    | |  | |    | |  | | (___   ___  __ _ _ __ ___| |__   ___ _ __
+    | |  | |    | |  | |\___ \ / _ \/ _` | '__/ __| '_ \ / _ \ '__|
+    | |  | |____| |__| |____) |  __/ (_| | | | (__| | | |  __/ |
+    |_|  |______|_____/|_____/ \___|\__,_|_|  \___|_| |_|\___|_|
+========================================
+[+] Starting TLDSearcher at {time.strftime('%H:%M:%S')} [+]
+----------------------------------------
+''')# Ascii banner and time started
 	if args.output:
-		output(f'''+++++++++++++++++++++++++++++++++++
-===================================
-Starting TLDScanner at {time.strftime('%H:%M:%S')} [+]
------------------------------------''')
+		output(f'''
+  _______ _      _____   _____                     _
+ |__   __| |    |  __ \ / ____|                   | |
+    | |  | |    | |  | | (___   ___  __ _ _ __ ___| |__   ___ _ __
+    | |  | |    | |  | |\___ \ / _ \/ _` | '__/ __| '_ \ / _ \ '__|
+    | |  | |____| |__| |____) |  __/ (_| | | | (__| | | |  __/ |
+    |_|  |______|_____/|_____/ \___|\__,_|_|  \___|_| |_|\___|_|
+========================================
+[+] Starting TLDSearcher at {time.strftime('%H:%M:%S')} [+]
+----------------------------------------''')# Ascii banner and time started
 	for target in targets:
 		for tld in listOfDomains:
 			url = f'{target}{tld}'
@@ -141,13 +147,13 @@ def normalScan(url, target, tld):
 		response = socket.gethostbyname_ex(url)
 		if response[2]:
 			if verbose:
-				print(f'[+] Found that {target} has TLD of {tld} || hostname: {response[0]} | IP: {response[2]}')
+				print(f'  [+] Found that {target} has TLD of {tld} || hostname: {response[0]} | IP: {str(response[2])}')
 			else:
 				print(f'[+] Found that {target} has TLD of {tld}')
 			pos.append(f'{target}{tld}\n')
 	except socket.gaierror: # No response from server
 			if verbose:
-				print(f'  No match found for {target}{tld}')
+				print(f'  [-] No match found for {target}{tld}')
 
 def sortTLD(tld):
 # Takes in list of domains from either user -d TLDs or -dF FILE
@@ -184,6 +190,10 @@ def setVars():
 	if args.verbose:
 		global verbose
 		verbose=True
+
+	# if args.domain and args.domainContinue or args.domain and args.domainCategory or args.domainContinue and args.domainCategory
+	# or args.domain and args.domainFile or args.domainContinue and args.domainCategory or args.domainFile and args.domainCategorys:
+	# 	sys.exit(print('Please use only ONE domain argument'))
 # TODO: Prevent using more than one domain-related flag.
 	if args.domain:
 		sortTLD(args.domain)
