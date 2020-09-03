@@ -89,25 +89,25 @@ Last Attempt: -----: {lastTry}''')
 ========================''')
 
 def scan():
-	print(f'''
-  _______ _      _____   _____                     _
+	print(f'''  _______ _      _____   _____                     _
  |__   __| |    |  __ \ / ____|                   | |
     | |  | |    | |  | | (___   ___  __ _ _ __ ___| |__   ___ _ __
     | |  | |    | |  | |\___ \ / _ \/ _` | '__/ __| '_ \ / _ \ '__|
     | |  | |____| |__| |____) |  __/ (_| | | | (__| | | |  __/ |
     |_|  |______|_____/|_____/ \___|\__,_|_|  \___|_| |_|\___|_|
+    https://www.github.com/plague-anon/TLDSearcher/wiki
 ========================================
 [+] Starting TLDSearcher at {time.strftime('%H:%M:%S')} [+]
 ----------------------------------------
 ''')# Ascii banner and time started
 	if args.output:
-		output(f'''
-  _______ _      _____   _____                     _
+		output(f'''  _______ _      _____   _____                     _
  |__   __| |    |  __ \ / ____|                   | |
     | |  | |    | |  | | (___   ___  __ _ _ __ ___| |__   ___ _ __
     | |  | |    | |  | |\___ \ / _ \/ _` | '__/ __| '_ \ / _ \ '__|
     | |  | |____| |__| |____) |  __/ (_| | | | (__| | | |  __/ |
     |_|  |______|_____/|_____/ \___|\__,_|_|  \___|_| |_|\___|_|
+    https://www.github.com/plague-anon/TLDSearcher/wiki
 ========================================
 [+] Starting TLDSearcher at {time.strftime('%H:%M:%S')} [+]
 ----------------------------------------''')# Ascii banner and time started
@@ -150,7 +150,7 @@ def normalScan(url, target, tld):
 		response = socket.gethostbyname_ex(url)
 		if response[2]:
 			if verbose:
-				print(f'  [+] Found that {target} has TLD of {tld} || hostname: {response[0]} | IP: {str(response[2])}')
+				print(f'  [+] Found that {target} has TLD of {tld} || hostname: {response[0]} | IP: {response[2]}')
 			else:
 				print(f'[+] Found that {target} has TLD of {tld}')
 			pos.append(f'{target}{tld}\n')
