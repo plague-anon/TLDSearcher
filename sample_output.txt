@@ -1,0 +1,130 @@
+  _______ _      _____   _____                     _
+ |__   __| |    |  __ \ / ____|                   | |
+    | |  | |    | |  | | (___   ___  __ _ _ __ ___| |__   ___ _ __
+    | |  | |    | |  | |\___ \ / _ \/ _` | '__/ __| '_ \ / _ \ '__|
+    | |  | |____| |__| |____) |  __/ (_| | | | (__| | | |  __/ |
+    |_|  |______|_____/|_____/ \___|\__,_|_|  \___|_| |_|\___|_|
+    https://www.github.com/plague-anon/TLDSearcher/wiki
+========================================
+[+] Starting TLDSearcher at 15:30:39 [+]
+----------------------------------------
+====================
+Target domain: google
+====================
+Atempted:----------: 177
+Positive results:--: 110
+Last Attempt: -----: .ws
+========================
+[+] Positive Results [+]
+========================
+google.ac
+google.ad
+google.ae
+google.af
+google.ag
+google.ai
+google.al
+google.am
+google.ge
+google.gf
+google.gg
+google.gl
+google.gm
+google.gp
+google.gr
+google.gy
+google.hk
+google.hm
+google.hn
+google.hr
+google.ht
+google.hu
+google.ie
+google.im
+google.in
+google.io
+google.iq
+google.is
+google.it
+google.je
+google.jo
+google.jp
+google.kg
+google.ki
+google.kr
+google.kz
+google.la
+google.li
+google.lk
+google.lt
+google.lu
+google.lv
+google.ma
+google.md
+google.me
+google.mg
+google.mk
+google.ml
+google.mn
+google.ms
+google.mu
+google.mv
+google.mw
+google.mx
+google.ne
+google.ng
+google.ni
+google.nl
+google.no
+google.nr
+google.nu
+google.pf
+google.ph
+google.pk
+google.pl
+google.pm
+google.pn
+google.ps
+google.pt
+google.qa
+google.re
+google.ro
+google.rs
+google.ru
+google.rw
+google.sa
+google.sc
+google.sd
+google.se
+google.sg
+google.sh
+google.si
+google.sk
+google.sl
+google.sm
+google.sn
+google.so
+google.sr
+google.st
+google.su
+google.tc
+google.td
+google.tf
+google.tg
+google.tk
+google.tl
+google.tm
+google.tn
+google.to
+google.tt
+google.tw
+google.ua
+google.us
+google.uy
+google.uz
+google.vg
+google.vn
+google.vu
+google.wf
+google.ws
+
