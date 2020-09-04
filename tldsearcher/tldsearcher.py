@@ -8,7 +8,6 @@
 # ====
 # Implement proxy use for requests
 # Fix 'During handling of the above exception, another exception occurred:' error when using CTRL-C during a scan.
-# Prevent more than one domain flag being used
 
 import socket
 import argparse
@@ -194,10 +193,6 @@ def setVars():
 		global verbose
 		verbose=True
 
-	# if args.domain and args.domainContinue or args.domain and args.domainCategory or args.domainContinue and args.domainCategory
-	# or args.domain and args.domainFile or args.domainContinue and args.domainCategory or args.domainFile and args.domainCategorys:
-	# 	sys.exit(print('Please use only ONE domain argument'))
-# TODO: Prevent using more than one domain-related flag.
 	if args.domain:
 		sortTLD(args.domain)
 	elif args.domainFile:
@@ -238,15 +233,18 @@ def setArgs():
 	parser = argparse.ArgumentParser(description='Search for active Top Level Domains(TLD\'s) for domain names.',usage='%(prog)s {[-t <TARGET>] [-tF <TARGET_FILE>]} {[-d com,co.uk,.net] [-dF <DOMAIN_FILE>] [-dC] [-dc <DOMAIN_TO_CONTINUE_FROM>]} [-o <OUTPUT_FILE_NAME>] [-v] ')
 	parser.add_argument('-t', '--target', help='targets domain name to scan for listOfDomains', action='store')
 	parser.add_argument('-tF', '--targetFile', help='Supply a targets file', action='store')
-	parser.add_argument('-d', '--domain', help='list of domains to scan. (com,ua,nz,de)', action='store')
-	parser.add_argument('-dC', '--domainCategory', help='Scan specific TLD categories', action='store_true')
-	parser.add_argument('-dc', '--domainContinue', help='Continue scanning all domains, starting from last attempt "..."', action='store')
-	parser.add_argument('-dF', '--domainFile', help='List of listOfDomains to scan. (Default = all)', action='store')
 	parser.add_argument('--max_scans', help='Maximum number of TLDs to scan', action='store')
 	parser.add_argument('-o', '--output', help='File to output results into', action='store')
 	#parser.add_argument('-p', '--proxy', help='Use proxies for requests (VERY SLOW!)', action='store_true')
 	parser.add_argument('-v', '--verbose', help='Verbose output mode', action='store_true')
 	parser.add_argument('--version', help='Display version information', action='version', version='%(prog)s ' + version)
+
+	group = parser.add_mutually_exclusive_group()
+	group.add_argument('-d', '--domain', help='list of domains to scan. (com,ua,nz,de)', action='store')
+	group.add_argument('-dC', '--domainCategory', help='Scan specific TLD categories', action='store_true')
+	group.add_argument('-dc', '--domainContinue', help='Continue scanning all domains, starting from last attempt "..."', action='store')
+	group.add_argument('-dF', '--domainFile', help='List of listOfDomains to scan. (Default = all)', action='store')
+
 	global args
 	args = parser.parse_args()
 
