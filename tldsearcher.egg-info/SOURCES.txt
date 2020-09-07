@@ -18,6 +18,7 @@ docs/readme.md
 docs/usage.rst
 tldsearcher/__init__.py
 tldsearcher/__main__.py
+tldsearcher/proxy_requests.py
 tldsearcher/tlds.py
 tldsearcher/tldsearcher.py
 tldsearcher.egg-info/PKG-INFO
