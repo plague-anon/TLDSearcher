@@ -8,7 +8,6 @@
 # ====
 # Implement proxy use for requests
 # Fix 'During handling of the above exception, another exception occurred:' error when using CTRL-C during a scan.
-# Prevent more than one domain flag being used
 
 import socket
 import argparse
@@ -33,6 +32,8 @@ domainCategory=0# for -domain-category menu
 continueDomain = ''# --domain-continue tld
 continueDomainIndice=0#--domain-continue tld indice in tlds.py
 outputFile=''
+max_scans=-1
+
 
 def main():
 		if len(sys.argv) <= 1:
@@ -46,15 +47,20 @@ def main():
 
 			if args.output:
 				output(f'''====================
-[/] TLD SEARCHER [\]   by plague
+Target domain: {args.target}
 ====================
 Atempted:----------: {attempts}
 Positive results:--: {len(pos)}
-Last Attempt: -----: {lastTry}
-========================
+Last Attempt: -----: {lastTry}''')
+				if len(pos)>=1:
+					output(f'''========================
 [+] Positive Results [+]
 ========================
 {"".join(pos)}''')
+				else:
+					print('''========================
+[-] No Results Found [-]
+========================''')
 
 
 def output(line):
@@ -64,31 +70,46 @@ def output(line):
 		print(line)
 		sys.stdout = original_stdout
 
-
 def printer():
-	print(f'''
-====================
-[/] TLD SEARCHER [\]   by plague
+	print(f'''====================
+Target domain: {args.target}
 ====================
 Atempted:----------: {attempts}
 Positive results:--: {len(pos)}
-Last Attempt: -----: {lastTry}
-========================
+Last Attempt: -----: {lastTry}''')
+	if len(pos)>=1:
+		print(f'''========================
 [+] Positive Results [+]
 ========================
 {"".join(pos)}''')
+	else:
+		print('''========================
+[-] No Results Found [-]
+========================''')
 
 def scan():
-	print(f'''
-===================================
-Starting TLDScanner at {time.strftime('%H:%M:%S')} [+]
------------------------------------
-''')
+	print(f'''  _______ _      _____   _____                     _
+ |__   __| |    |  __ \ / ____|                   | |
+    | |  | |    | |  | | (___   ___  __ _ _ __ ___| |__   ___ _ __
+    | |  | |    | |  | |\___ \ / _ \/ _` | '__/ __| '_ \ / _ \ '__|
+    | |  | |____| |__| |____) |  __/ (_| | | | (__| | | |  __/ |
+    |_|  |______|_____/|_____/ \___|\__,_|_|  \___|_| |_|\___|_|
+    https://www.github.com/plague-anon/TLDSearcher/wiki
+========================================
+[+] Starting TLDSearcher at {time.strftime('%H:%M:%S')} [+]
+----------------------------------------
+''')# Ascii banner and time started
 	if args.output:
-		output(f'''+++++++++++++++++++++++++++++++++++
-===================================
-Starting TLDScanner at {time.strftime('%H:%M:%S')} [+]
------------------------------------''')
+		output(f'''  _______ _      _____   _____                     _
+ |__   __| |    |  __ \ / ____|                   | |
+    | |  | |    | |  | | (___   ___  __ _ _ __ ___| |__   ___ _ __
+    | |  | |    | |  | |\___ \ / _ \/ _` | '__/ __| '_ \ / _ \ '__|
+    | |  | |____| |__| |____) |  __/ (_| | | | (__| | | |  __/ |
+    |_|  |______|_____/|_____/ \___|\__,_|_|  \___|_| |_|\___|_|
+    https://www.github.com/plague-anon/TLDSearcher/wiki
+========================================
+[+] Starting TLDSearcher at {time.strftime('%H:%M:%S')} [+]
+----------------------------------------''')# Ascii banner and time started
 	for target in targets:
 		for tld in listOfDomains:
 			url = f'{target}{tld}'
@@ -100,6 +121,12 @@ Starting TLDScanner at {time.strftime('%H:%M:%S')} [+]
 
 			global attempts
 			attempts += 1
+
+			global max_scans
+			if max_scans >=1:
+				max_scans -= 1
+			elif max_scans == 0:
+				sys.exit(printer())
 
 			# if args.proxy:
 			# 	proxyScan(url)
@@ -122,13 +149,13 @@ def normalScan(url, target, tld):
 		response = socket.gethostbyname_ex(url)
 		if response[2]:
 			if verbose:
-				print(f'[+] Found that {target} has TLD of {tld} || hostname: {response[0]} | IP: {response[2]}')
+				print(f'  [+] Found that {target} has TLD of {tld} || hostname: {response[0]} | IP: {response[2]}')
 			else:
 				print(f'[+] Found that {target} has TLD of {tld}')
 			pos.append(f'{target}{tld}\n')
 	except socket.gaierror: # No response from server
 			if verbose:
-				print(f'  No match found for {target}{tld}')
+				print(f'  [-] No match found for {target}{tld}')
 
 def sortTLD(tld):
 # Takes in list of domains from either user -d TLDs or -dF FILE
@@ -150,15 +177,22 @@ def sortTLD(tld):
 def setVars():
 	global listOfDomains
 	global outputFile
+	global max_scans
 
-	if args.proxy:
-		global proxy
-		proxy = True
+	if args.max_scans:
+		if int(args.max_scans) >= 1:
+			max_scans = int(args.max_scans)-1
+		else:
+			sys.exit(print('You must give a number >= 1 for --max_scans'))
+	#
+	# if args.proxy:
+	# 	global proxy
+	# 	proxy = True
 
 	if args.verbose:
 		global verbose
 		verbose=True
-# TODO: Prevent using more than one domain-related flag.
+
 	if args.domain:
 		sortTLD(args.domain)
 	elif args.domainFile:
@@ -199,14 +233,18 @@ def setArgs():
 	parser = argparse.ArgumentParser(description='Search for active Top Level Domains(TLD\'s) for domain names.',usage='%(prog)s {[-t <TARGET>] [-tF <TARGET_FILE>]} {[-d com,co.uk,.net] [-dF <DOMAIN_FILE>] [-dC] [-dc <DOMAIN_TO_CONTINUE_FROM>]} [-o <OUTPUT_FILE_NAME>] [-v] ')
 	parser.add_argument('-t', '--target', help='targets domain name to scan for listOfDomains', action='store')
 	parser.add_argument('-tF', '--targetFile', help='Supply a targets file', action='store')
-	parser.add_argument('-d', '--domain', help='list of domains to scan. (com,ua,nz,de)', action='store')
-	parser.add_argument('-dC', '--domainCategory', help='Scan specific TLD categories', action='store_true')
-	parser.add_argument('-dc', '--domainContinue', help='Continue scanning all domains, starting from last attempt "..."', action='store')
-	parser.add_argument('-dF', '--domainFile', help='List of listOfDomains to scan. (Default = all)', action='store')
+	parser.add_argument('--max_scans', help='Maximum number of TLDs to scan', action='store')
 	parser.add_argument('-o', '--output', help='File to output results into', action='store')
 	#parser.add_argument('-p', '--proxy', help='Use proxies for requests (VERY SLOW!)', action='store_true')
 	parser.add_argument('-v', '--verbose', help='Verbose output mode', action='store_true')
 	parser.add_argument('--version', help='Display version information', action='version', version='%(prog)s ' + version)
+
+	group = parser.add_mutually_exclusive_group()
+	group.add_argument('-d', '--domain', help='list of domains to scan. (com,ua,nz,de)', action='store')
+	group.add_argument('-dC', '--domainCategory', help='Scan specific TLD categories', action='store_true')
+	group.add_argument('-dc', '--domainContinue', help='Continue scanning all domains, starting from last attempt "..."', action='store')
+	group.add_argument('-dF', '--domainFile', help='List of listOfDomains to scan. (Default = all)', action='store')
+
 	global args
 	args = parser.parse_args()
 

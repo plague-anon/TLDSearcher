@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: tldsearcher
-Version: 1.0.6
+Version: 1.2.0
 Summary: A tool for finding TLDs for domains
 Home-page: https://github.com/plague-anon/tldsearcher
 Author: plague
@@ -37,22 +37,22 @@ Description: ![License](https://img.shields.io/github/license/plague-anon/tldsea
         
         
         ### PyPI
-        You can install **TLDSearcher** via pip with 2 methods.
+        You can install **TLDSearcher** via pip
         **Method 1**
         Issue the following command from the terminal to download the [latest version](https://pypi.org/project/tldsearcher/) from [pypi.org](https://pypi.org)
         
         > `pip3 install tldsearcher`
         
-        **Method 2**
-        Issue the following command from the terminal to download the [latest version](https://github.com/plague-anon/TLDSearcher/releases) from [Github](https://www.github.com)
         
-        > `pip3 install -e git+https://github.com/plague-anon/TLDSearcher#egg=pkg`
+        ## Usage Examples
+        To verbosely search for **all** TLDs for _example_:
+        `tldsearcher -t example -v`
         
-        ## Usage Example
-        ```
-        tldsearcher -t example -d com,co.uk,.net,.org -v
-        ```
-        _The `-d` flag must be a string of TLDs, separated with a comma. The preceding `.` does not have to be supplied_
+        To verbosely search for specific TLDs for _example_ and output into _scan.txt_:
+        `tldsearcher -t example -d com,net,info,org -o scan.txt -v `
+        
+        To see a list of TLD categories to scan for _example_:
+        `tldSearcher -t example -dC -o scan.txt -v`
         
         _For more examples and usage, please refer to the [Wiki][wiki]._
         
@@ -81,6 +81,15 @@ Description: ![License](https://img.shields.io/github/license/plague-anon/tldsea
         
         
         # History
+        * **1.2.0**
+            * You can now specify a maximum number of scans to do with the `--max_scans` flag
+            * Results printing is now enhanced
+            * A sample output file has been added
+        * **1.1.0**
+            * You can now specify which domain to start from _(when doing a full TLD scan)_ by using the -dc flag `-dc <Domain_To_Continue_From>`
+            * You can now save the output of a scan into a file by using the `-o <output_file_name>` flag
+        * **1.0.6**
+            * Fixed bug with files
         * **1.0.5**
             * Added __main__ file to root directory to prevent error when starting via python3
         * **1.0.4**
